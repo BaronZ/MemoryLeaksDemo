@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MemoryLeakDemo</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_handler_leak">HandlerLeakActivity</string>
+    <string name="title_activity_inner_class_leak">InnerClassLeakActivity</string>
+    <string name="title_activity_anonymous_class_leak">AnonymousClassLeakActivity</string>
+</resources>
