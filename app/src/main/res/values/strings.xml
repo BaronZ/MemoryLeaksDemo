@@ -6,4 +6,5 @@
     <string name="title_activity_handler_leak">HandlerLeakActivity</string>
     <string name="title_activity_inner_class_leak">InnerClassLeakActivity</string>
     <string name="title_activity_anonymous_class_leak">AnonymousClassLeakActivity</string>
+    <string name="title_activity_singleton_leak">SingletonLeakActivity</string>
 </resources>

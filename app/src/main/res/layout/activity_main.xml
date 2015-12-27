@@ -10,15 +10,32 @@
     tools:context=".MainActivity">
 
     <Button
+        android:id="@+id/btn_handler"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world"
         android:onClick="onClick"
-        />
+        android:text="HandlerLeak" />
 
-    <ImageView
-        android:id="@+id/iv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <Button
+        android:id="@+id/btn_inner_class"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="HandlerLeak" />
+
+    <Button
+        android:id="@+id/btn_singleton_context"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="SingletonContextLeak" />
+
+    <Button
+        android:id="@+id/btn_anonymous"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="AnonymousClassLeak" />
+
 
 </LinearLayout>
