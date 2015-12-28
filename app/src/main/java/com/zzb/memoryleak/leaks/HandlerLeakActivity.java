@@ -24,6 +24,7 @@ public class HandlerLeakActivity extends AppCompatActivity {
         Message msg1 = new Message();
         msg1.obj = "sHandler";
 //        sHandler.sendMessage(msg1);
+        //.removeCallbacks
     }
     private void leak0(){
 
