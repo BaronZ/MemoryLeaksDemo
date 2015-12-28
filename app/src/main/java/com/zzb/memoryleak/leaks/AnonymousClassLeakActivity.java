@@ -48,6 +48,7 @@ public class AnonymousClassLeakActivity extends AppCompatActivity implements Sin
     @Override
     protected void onStop() {
         super.onStop();
+        //解决方法：在Activity结束的时候，释放引用
         // SingletonAnonymousLeak.getInstance().release();
     }
 
