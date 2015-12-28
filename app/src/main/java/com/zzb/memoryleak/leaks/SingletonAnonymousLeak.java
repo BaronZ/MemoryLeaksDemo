@@ -13,7 +13,7 @@ public class SingletonAnonymousLeak {
     private Listener mListener;
 
     public void release() {
-        mListeners = new ArrayList<>();
+        mListeners.clear();
         mListener = null;
     }
 

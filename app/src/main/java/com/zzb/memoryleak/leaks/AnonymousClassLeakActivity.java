@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.zzb.memoryleak.DataProvider;
 import com.zzb.memoryleak.R;
 
 /**
@@ -13,12 +14,12 @@ import com.zzb.memoryleak.R;
  */
 public class AnonymousClassLeakActivity extends AppCompatActivity implements SingletonAnonymousLeak.Listener {
     private SingletonAnonymousLeak.Listener mListener;
-    private static int sCounter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_anonymous_class_leak);
-        initViews();
+        ImageView iv = (ImageView) findViewById(R.id.iv);
+        iv.setImageResource(DataProvider.getImageResId());
         findViewById(R.id.btn_release).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -28,26 +29,7 @@ public class AnonymousClassLeakActivity extends AppCompatActivity implements Sin
         leak0();
     }
 
-    private void initViews() {
-        ImageView iv = (ImageView) findViewById(R.id.iv);
-        int index = (sCounter++) % 5;
-        int resId = R.drawable.large1;
-        switch (index){
-            case 0:
-                resId = R.drawable.img3;
-                break;
-            case 1:
-                resId = R.drawable.large2;
-                break;
-            case 2:
-                resId = R.drawable.large3;
-                break;
-            case 3:
-                resId = R.drawable.large4;
-                break;
-        }
-        iv.setImageResource(resId);
-    }
+
 
     private void leak0() {
         SingletonAnonymousLeak.getInstance().addListener(new SingletonAnonymousLeak.Listener() {
