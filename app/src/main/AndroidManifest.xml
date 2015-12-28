@@ -31,7 +31,7 @@
             android:label="@string/title_activity_anonymous_class_leak" >
         </activity>
         <activity
-            android:name=".leaks.SingletonLeakActivity"
+            android:name=".leaks.SingletonContextLeakActivity"
             android:label="@string/title_activity_singleton_leak" >
         </activity>
     </application>

@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.zzb.memoryleak.R;
 
-public class SingletonLeakActivity extends AppCompatActivity {
+public class SingletonContextLeakActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,6 +14,10 @@ public class SingletonLeakActivity extends AppCompatActivity {
         leak0();
     }
     private void leak0(){
-        SingletonLeak.getInstance(this);
+        SingletonContextLeak.getInstance(this);
+    }
+    //解决方法，用ApplicationContext代替Activity
+    private void noLeak(){
+        SingletonContextLeak.getInstance(this.getApplicationContext());
     }
 }

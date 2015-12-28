@@ -8,7 +8,7 @@ import android.view.View;
 import com.zzb.memoryleak.leaks.AnonymousClassLeakActivity;
 import com.zzb.memoryleak.leaks.HandlerLeakActivity;
 import com.zzb.memoryleak.leaks.InnerClassLeakActivity;
-import com.zzb.memoryleak.leaks.SingletonLeakActivity;
+import com.zzb.memoryleak.leaks.SingletonContextLeakActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 toActivity(AnonymousClassLeakActivity.class);
                 break;
             case R.id.btn_singleton_context:
-                toActivity(SingletonLeakActivity.class);
+                toActivity(SingletonContextLeakActivity.class);
                 break;
         }
     }
