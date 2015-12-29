@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.zzb.memoryleak.DataProvider;
 import com.zzb.memoryleak.R;
@@ -16,10 +15,11 @@ import java.lang.ref.WeakReference;
 
 public class HandlerLeakActivity extends AppCompatActivity {
     private static final String TAG = "HandlerLeakActivity";
-    private InnerStaticHandler mInnerStaticHandler;
-    private String mStringField;
+    private String mStringField = "someText";
     public static final int DELAY_IN_MILLIS = 60000;
     private InnerHandler mInnerHandler;
+    private InnerStaticHandler mInnerStaticHandler;
+    private InnerStaticWeakHandler mInnerStaticWeakHandler;
     private View mBtn;
 
     @Override
@@ -29,12 +29,8 @@ public class HandlerLeakActivity extends AppCompatActivity {
         ImageView iv = (ImageView) findViewById(R.id.iv);
         iv.setImageResource(DataProvider.getImageResId());
         mBtn = findViewById(R.id.btn_release);
-        mBtn.setOnClickListener(v ->{
-                mInnerHandler.removeMessages(0);
-                mInnerHandler = null;
-        });
-        leak0();
-        //.removeCallbacks
+        leak3();
+
     }
 
 
@@ -47,14 +43,31 @@ public class HandlerLeakActivity extends AppCompatActivity {
         mInnerHandler.sendMessageDelayed(msg, DELAY_IN_MILLIS);
 
     }
-
+    //static no leak
     private void leak1() {
         Message msg = new Message();
         msg.what = 1;
-        msg.obj = "InnerHandler msg";
-        InnerStaticHandler handler = new InnerStaticHandler(mBtn);
+        msg.obj = "InnerStaticHandler msg";
+        mInnerStaticHandler = new InnerStaticHandler();
+        mInnerStaticHandler.sendMessageDelayed(msg, DELAY_IN_MILLIS);
     }
 
+    private void leak2(){
+        Message msg = new Message();
+        msg.what = 1;
+        msg.obj = "InnerStaticHandler msg";
+        mInnerStaticHandler = new InnerStaticHandler(mBtn);
+//        mInnerStaticHandler = new InnerStaticHandler(mStringField);//fine without ref to activity
+        mInnerStaticHandler.sendMessageDelayed(msg, DELAY_IN_MILLIS);
+    }
+    //no leak
+    private void leak3(){
+        Message msg = new Message();
+        msg.what = 1;
+        msg.obj = "InnerStaticWeakHandler msg";
+        mInnerStaticWeakHandler = new InnerStaticWeakHandler(mBtn);
+        mInnerStaticWeakHandler.sendMessageDelayed(msg, DELAY_IN_MILLIS);
+    }
     private class InnerHandler extends Handler {
 
         @Override
@@ -67,7 +80,7 @@ public class HandlerLeakActivity extends AppCompatActivity {
     private static class InnerStaticHandler extends Handler {
         private View view;//what about not TextView but some fields without ref to context
         private String stringField;
-
+        public InnerStaticHandler(){}
         public InnerStaticHandler(View view) {
             this.view = view;
         }
@@ -83,11 +96,11 @@ public class HandlerLeakActivity extends AppCompatActivity {
         }
     }
 
-    private class InnerStaticWeakHandler extends Handler {
-        private WeakReference<TextView> tvRef;
+    private static class InnerStaticWeakHandler extends Handler {
+        private WeakReference<View> vRef;
 
-        public InnerStaticWeakHandler(TextView tv) {
-            tvRef = new WeakReference<TextView>(tv);
+        public InnerStaticWeakHandler(View view) {
+            vRef = new WeakReference<View>(view);
         }
 
         @Override
@@ -101,7 +114,11 @@ public class HandlerLeakActivity extends AppCompatActivity {
 //
     }
     //call in onStop
-    private void releaseInnerHandler(){
+    private void solutionForInnerHandler(){
         mInnerHandler.removeMessages(0);
+        //.removeCallbacks
+    }
+    private void solutionForInnerStaticHandler(){
+        //use InnerStaticWeakHandler
     }
 }
