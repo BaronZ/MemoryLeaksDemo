@@ -26,7 +26,7 @@ public class AnonymousClassLeakActivity extends AppCompatActivity implements Sin
                 SingletonAnonymousLeak.getInstance().release();
             }
         });
-        leak0();
+        lambdaAvoidLeak();
     }
 
 
@@ -43,6 +43,10 @@ public class AnonymousClassLeakActivity extends AppCompatActivity implements Sin
         SingletonAnonymousLeak.getInstance().setListener(this);
     }
 
+    private void lambdaAvoidLeak(){
+        SingletonAnonymousLeak.getInstance().addListener(() -> {
+        });
+    }
    
 
     @Override
