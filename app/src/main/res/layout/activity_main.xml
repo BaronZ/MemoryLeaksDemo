@@ -14,28 +14,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onClick"
-        android:text="HandlerLeak" />
+        android:text="Handler Leak" />
 
     <Button
         android:id="@+id/btn_inner_class"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onClick"
-        android:text="HandlerLeak" />
+        android:text="Inner Class Leak" />
 
     <Button
         android:id="@+id/btn_singleton_context"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onClick"
-        android:text="SingletonContextLeak" />
+        android:text="Singleton Context Leak" />
 
     <Button
         android:id="@+id/btn_anonymous"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onClick"
-        android:text="AnonymousClassLeak" />
+        android:text="Anonymous Class Leak" />
 
 
 </LinearLayout>

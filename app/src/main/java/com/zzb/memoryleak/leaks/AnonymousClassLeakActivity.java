@@ -26,7 +26,7 @@ public class AnonymousClassLeakActivity extends AppCompatActivity implements Sin
                 SingletonAnonymousLeak.getInstance().release();
             }
         });
-        lambdaAvoidLeak();
+        leak0();
     }
 
 
@@ -43,6 +43,7 @@ public class AnonymousClassLeakActivity extends AppCompatActivity implements Sin
         SingletonAnonymousLeak.getInstance().setListener(this);
     }
 
+    //使用lambda可以避免内存泄露，前提是不引用外部类
     private void lambdaAvoidLeak(){
         SingletonAnonymousLeak.getInstance().addListener(() -> {
         });
