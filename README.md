@@ -3,6 +3,7 @@ android内存泄露例子
   
 [匿名内部类泄露](https://github.com/BaronZ/MemoryLeaksDemo/blob/master/app/src/main/java/com/zzb/memoryleak/leaks/AnonymousClassLeakActivity.java)  
 [单例引用Context类泄露](https://github.com/BaronZ/MemoryLeaksDemo/blob/master/app/src/main/java/com/zzb/memoryleak/leaks/SingletonContextLeakActivity.java)   
+[Handler泄露，看完你就再也不怕Handler内存泄露了](https://github.com/BaronZ/MemoryLeaksDemo/blob/master/app/src/main/java/com/zzb/memoryleak/leaks/HandlerLeakActivity.java)
   
 在Android中，如果你泄露了Activity实例，那么和Activity相关的对象都不会被释放。比如Activity里ImageView显示的图片，bitmap占用很大的内存都不会被回收。  
 下面的图片很好的显示了内存泄露,我在一个Activity中显示一张大图片，分别看看有内存泄露和无内存泄露触发gc的情况  
