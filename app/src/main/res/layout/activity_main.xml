@@ -36,6 +36,12 @@
         android:layout_height="wrap_content"
         android:onClick="onClick"
         android:text="Anonymous Class Leak" />
+    <Button
+        android:id="@+id/btn_static_drawable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="Static Drawable Leak" />
 
 
 </LinearLayout>

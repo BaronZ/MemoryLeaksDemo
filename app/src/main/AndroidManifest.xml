@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.zzb.memoryleak" >
+<manifest package="com.zzb.memoryleak"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:name=".MyApplication"
@@ -8,31 +8,33 @@
         android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
             android:name=".leaks.HandlerLeakActivity"
-            android:label="@string/title_activity_handler_leak" >
+            android:label="@string/title_activity_handler_leak">
         </activity>
         <activity
             android:name=".leaks.InnerClassLeakActivity"
-            android:label="@string/title_activity_inner_class_leak" >
+            android:label="@string/title_activity_inner_class_leak">
         </activity>
         <activity
             android:name=".leaks.AnonymousClassLeakActivity"
-            android:label="@string/title_activity_anonymous_class_leak" >
+            android:label="@string/title_activity_anonymous_class_leak">
         </activity>
         <activity
             android:name=".leaks.SingletonContextLeakActivity"
-            android:label="@string/title_activity_singleton_leak" >
+            android:label="@string/title_activity_singleton_leak">
+        </activity>
+        <activity android:name=".leaks.StaticDrawableActivity">
         </activity>
     </application>
 

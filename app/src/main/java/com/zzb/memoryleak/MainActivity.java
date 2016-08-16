@@ -9,6 +9,7 @@ import com.zzb.memoryleak.leaks.AnonymousClassLeakActivity;
 import com.zzb.memoryleak.leaks.HandlerLeakActivity;
 import com.zzb.memoryleak.leaks.InnerClassLeakActivity;
 import com.zzb.memoryleak.leaks.SingletonContextLeakActivity;
+import com.zzb.memoryleak.leaks.StaticDrawableActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -33,6 +34,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_singleton_context:
                 toActivity(SingletonContextLeakActivity.class);
+                break;
+            case R.id.btn_static_drawable:
+                toActivity(StaticDrawableActivity.class);
                 break;
         }
     }
