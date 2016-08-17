@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
-import com.zzb.memoryleak.DataProvider;
 import com.zzb.memoryleak.R;
 
 /**
@@ -22,8 +21,9 @@ public class StaticDrawableActivity extends AppCompatActivity {
         setContentView(R.layout.activity_static_drawable);
         ImageView iv = (ImageView) findViewById(R.id.iv);
 
-        sDrawable = getResources().getDrawable(DataProvider.getImageResId());
+        sDrawable = getResources().getDrawable(R.drawable.large1);
         iv.setImageDrawable(sDrawable);
-        
+
+        findViewById(R.id.btn_release).setOnClickListener(v -> sDrawable = null);
     }
 }
