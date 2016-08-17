@@ -20,4 +20,8 @@ public class SingletonContextLeak {
     private SingletonContextLeak(Context context) {
         mContext = context;
     }
+
+    public static void reset(){
+        sInstance = null;
+    }
 }

@@ -1,15 +1,34 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.zzb.memoryleak.leaks.SingletonContextLeakActivity">
+    tools:context="com.zzb.memoryleak.leaks.SingletonContextLeakActivity"
+    >
+
+    <Button
+        android:id="@+id/btn_leak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="leak"
+        android:onClick="onClick"
+        />
+    <!--drawable目录下的图片，同一个图片只占一份内存，相当于单例-->
+    <Button
+        android:id="@+id/btn_no_leak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="no leak"
+        android:layout_toRightOf="@id/btn_leak"
+        android:onClick="onClick"
+        />
 
     <ImageView
-        android:id="@+id/iv"
-        android:src="@drawable/img4"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
+        android:layout_height="match_parent"
+        android:src="@drawable/large1"
+        />
 </RelativeLayout>
