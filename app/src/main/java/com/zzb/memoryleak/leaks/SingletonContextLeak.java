@@ -1,6 +1,7 @@
 package com.zzb.memoryleak.leaks;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 
 /**
  * 单例引用Context内存泄露
@@ -10,6 +11,7 @@ public class SingletonContextLeak {
 
     private static SingletonContextLeak sInstance;
     private Context mContext;
+    private Drawable mDrawable;
     //Context泄露
     public static SingletonContextLeak getInstance(Context context) {
         if(sInstance == null){
@@ -23,5 +25,9 @@ public class SingletonContextLeak {
 
     public static void reset(){
         sInstance = null;
+    }
+
+    public void ref(Drawable drawable) {
+        mDrawable = drawable;
     }
 }
