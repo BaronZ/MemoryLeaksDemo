@@ -12,6 +12,7 @@ import com.zzb.memoryleak.R;
  *  this means the drawable has a reference to the TextView which itself has a reference to the activity (the Context)
  *  which in turns has references to pretty much anything (depending on your code.)
  */
+//update: 这里的drawable的callback已经变成weak reference,不会再泄露了activity,只会泄露drawable本身
 public class StaticDrawableActivity extends AppCompatActivity {
     private static Drawable sDrawable;
 
