@@ -1,5 +1,8 @@
 package com.zzb.memoryleak.leaks;
 
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -18,6 +21,34 @@ public class SingletonContextLeakActivity extends AppCompatActivity implements V
         setContentView(R.layout.activity_singleton_leak);
         mTv = (TextView) findViewById(R.id.tv);
         mContext = this;
+        animatorLeak();
+    }
+    private void animatorLeak(){
+        ObjectAnimator animator = ObjectAnimator.ofFloat(mTv, "alpha", 0.3f, 1.0f, 0.3f)
+                .setDuration(1000);
+        animator.setRepeatCount(Integer.MAX_VALUE);
+        animator.addListener(new AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
+        animator.start();
     }
     //引用了Activity，导致内存泄露
     private void leak0(){
